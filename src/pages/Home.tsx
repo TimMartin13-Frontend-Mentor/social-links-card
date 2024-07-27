@@ -18,18 +18,14 @@ const Home: FunctionComponent = () => {
   const [profileData, setProfileData] = useState<ProfileData[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const baseUrl = import.meta.env.VITE_BASE_URL || '';
-        const response = await fetch(`${baseUrl}/data/profileData.json`);
-        const data = await response.json();
-        setProfileData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    fetch('/profileData.json') // Use a relative path
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+      })
+      .then((data) => setProfileData(data))
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   return (

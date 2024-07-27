@@ -4,4 +4,5 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/social-links-card/' : '/',
   plugins: [react()],
+  publicDir: 'public',
 });
