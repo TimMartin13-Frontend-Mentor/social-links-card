@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/' : '/',
+  base: '/social-links-card/',
   plugins: [react()],
   publicDir: 'public',
   build: {
