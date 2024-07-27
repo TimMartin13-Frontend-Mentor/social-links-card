@@ -18,7 +18,7 @@ const Home: FunctionComponent = () => {
   const [profileData, setProfileData] = useState<ProfileData[]>([]);
 
   useEffect(() => {
-    fetch('/profileData.json')
+    fetch(`${import.meta.env.BASE_URL}profileData.json`)
       .then((response) => {
         if (!response.ok) {
           console.error('Response status:', response.status);

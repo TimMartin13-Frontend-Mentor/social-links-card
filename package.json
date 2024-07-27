@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run copy-404",
+    "build": "tsc && vite build && npm run copy-404 && npm run copy-profile-data",
     "copy-404": "node -e \"require('fs').copyFile('dist/index.html', 'dist/404.html', (err) => { if (err) throw err; console.log('404.html created');})\"",
+    "copy-profile-data": "node -e \"require('fs').copyFile('profileData.json', 'dist/profileData.json', (err) => { if (err) throw err; console.log('profileData.json copied to dist');})\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
