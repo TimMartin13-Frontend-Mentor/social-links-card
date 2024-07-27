@@ -20,7 +20,8 @@ const Home: FunctionComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('./src/data/profileData.json');
+        const baseUrl = import.meta.env.VITE_BASE_URL || '';
+        const response = await fetch(`${baseUrl}/data/profileData.json`);
         const data = await response.json();
         setProfileData(data);
       } catch (error) {
@@ -32,7 +33,7 @@ const Home: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className='w-screen h-[960px] relative bg-color-grey-900 overflow-hidden flex flex-row items-center justify-center box-border leading-[normal] tracking-[normal]'>
+    <div className='min-h-screen w-full bg-color-grey-900 flex items-center justify-center'>
       {profileData.map((profile, index) => (
         <Card key={index} data={profile} />
       ))}
