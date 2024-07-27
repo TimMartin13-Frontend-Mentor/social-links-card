@@ -18,10 +18,13 @@ const Home: FunctionComponent = () => {
   const [profileData, setProfileData] = useState<ProfileData[]>([]);
 
   useEffect(() => {
-    fetch('/profileData.json') // Use a relative path
+    fetch('/profileData.json')
       .then((response) => {
-        if (!response.ok)
+        if (!response.ok) {
+          console.error('Response status:', response.status);
+          console.error('Response URL:', response.url);
           throw new Error(`HTTP error! status: ${response.status}`);
+        }
         return response.json();
       })
       .then((data) => setProfileData(data))
